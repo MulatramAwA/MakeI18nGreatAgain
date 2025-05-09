@@ -23,7 +23,7 @@ public class BingTranslator {
             try{
                 String s=conn2str(connection);
                 Pattern pattern=Pattern.compile("IG:\"(\\w+)\"");
-                LOGGER.info(s);
+                //LOGGER.info(s);
                 this.ig=pattern.matcher(s).group(0);
                 pattern=Pattern.compile("<div id=\"tta_outGDCont\" data-iid=\"([\\w.]+)\">");
                 this.iid=pattern.matcher(s).group(0);

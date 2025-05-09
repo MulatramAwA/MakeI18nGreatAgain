@@ -10,11 +10,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Makei18ngreatagain implements ModInitializer {
     public static final String MOD_ID = "makei18ngreatagain";
     public static final Logger LOGGER=LoggerFactory.getLogger(MOD_ID);
-    public static HashMap<String,String> TranslatorCache=new HashMap<>();
+    public static Map<String,String> TranslatorCache=new HashMap<>();
 
     @Override
     public void onInitialize() {
