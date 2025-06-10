@@ -8,13 +8,13 @@ import static io.github.MulatramAwA.makei18ngreatagain.configs.Makei18ngreatagai
 import static io.github.MulatramAwA.makei18ngreatagain.configs.Makei18ngreatagainConfig.reload;
 
 public class TranslatorWithCache extends BingTranslator {
-    public MutableText getTranslateWithCache(String text) {
+    public String getTranslateWithCache(String text) {
         reload();
-        if(!enableAutoTranslate) return (MutableText) Text.of(text);
+        if(!enableAutoTranslate) return text;
         if(!TranslatorCache.containsKey(text)){
             TranslatorCache.put(text,getTranslate(text));
         }
-        if(TranslatorCache.get(text)==null) return (MutableText) Text.of(text);
-        return (MutableText) Text.of(TranslatorCache.get(text));
+        if(TranslatorCache.get(text)==null) return text;
+        return TranslatorCache.get(text);
     }
 }

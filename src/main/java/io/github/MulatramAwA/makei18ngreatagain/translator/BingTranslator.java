@@ -14,6 +14,7 @@ import static io.github.MulatramAwA.makei18ngreatagain.Makei18ngreatagain.LOGGER
 public class BingTranslator {
     private String ig,iid,key,token;
     public BingTranslator(){
+        /*
         try{
             URL url= new URL("https://cn.bing.com/translator?ref=TThis&text=&from=en&to=zh-Hans");
             HttpsURLConnection connection=(HttpsURLConnection) url.openConnection();
@@ -36,8 +37,10 @@ public class BingTranslator {
         }catch (Exception e){
             LOGGER.error("Failed while initializing: {}", (Object) e.getStackTrace());
         }
+         */
     }
     public String getTranslate(String s){
+        /*
         try {
             URL url=new URL("https://cn.bing.com/ttranslatev3?isVertical=1&&IG="+this.ig+"&IID="+this.iid);
             String data="fromLang=en&to=zh-Hans&text="+s+"&tryFetchingGenderDebiasedTranslations=true&token="+token+"&key="+key;
@@ -62,6 +65,8 @@ public class BingTranslator {
             LOGGER.error("Failed while getting translate of {}: {}",s,e.getMessage());
             return null;
         }
+         */
+        return "我是乃龙!!!";
     }
     private String conn2str(HttpsURLConnection connection) throws IOException {
         InputStream inputStream=connection.getInputStream();

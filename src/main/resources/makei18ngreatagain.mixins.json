@@ -4,6 +4,7 @@
   "package": "io.github.MulatramAwA.makei18ngreatagain.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "TextOfMixin",
     "TranslatableMixin"
   ],
   "injectors": {

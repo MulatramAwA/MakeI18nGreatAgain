@@ -25,9 +25,9 @@ public class TranslatableMixin {
     @WrapOperation(method = "updateTranslations", at = @At(target="Lnet/minecraft/text/TranslatableTextContent;forEachPart(Ljava/lang/String;Ljava/util/function/Consumer;)V",value = "INVOKE"))
     private void updateTranslations(TranslatableTextContent instance, String translation, Consumer<StringVisitable> partsConsumer, Operation<Void> original){
         reload();
-        if(enableAutoTranslateWhitelist&&autoTranslateWhitelist.contains(translation)) original.call(instance, new TranslatorWithCache().getTranslateWithCache(translation).getString(), partsConsumer);
+        if(enableAutoTranslateWhitelist&&autoTranslateWhitelist.contains(translation)) original.call(instance, new TranslatorWithCache().getTranslateWithCache(translation), partsConsumer);
         else if (languageCache != null && !languageCache.hasTranslation(key)){
-            original.call(instance, new TranslatorWithCache().getTranslateWithCache(translation).getString(), partsConsumer);
+            original.call(instance, new TranslatorWithCache().getTranslateWithCache(translation), partsConsumer);
         }
         else original.call(instance, translation, partsConsumer);
     }

@@ -4,7 +4,6 @@
   "package": "io.github.MulatramAwA.makei18ngreatagain.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "TextRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
