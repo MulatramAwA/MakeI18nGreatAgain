@@ -15,7 +15,6 @@ import java.util.Map;
 public class Makei18ngreatagain implements ModInitializer {
     public static final String MOD_ID = "makei18ngreatagain";
     public static final Logger LOGGER=LoggerFactory.getLogger(MOD_ID);
-    public static Map<String,String> TranslatorCache=new HashMap<>();
 
     @Override
     public void onInitialize() {
@@ -27,7 +26,7 @@ public class Makei18ngreatagain implements ModInitializer {
 
             @Override
             public void reload(ResourceManager manager) {
-                TranslatorCache.clear();
+
             }
         });
     }

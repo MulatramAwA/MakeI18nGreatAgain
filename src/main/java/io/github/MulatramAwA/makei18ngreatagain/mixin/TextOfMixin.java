@@ -1,10 +1,9 @@
 package io.github.MulatramAwA.makei18ngreatagain.mixin;
 
-import io.github.MulatramAwA.makei18ngreatagain.translator.TranslatorWithCache;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.PlainTextContent;
-import net.minecraft.text.Text;
 import net.minecraft.text.TextContent;
+import net.minecraft.util.Language;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -16,8 +15,8 @@ public class TextOfMixin {
     @ModifyVariable(method = "<init>",at=@At("HEAD"),ordinal = 0)
     private static TextContent of(TextContent value){
         reload();
-        if(enableAutoTranslateWhitelist&&textRenderWhitelist.contains(value.toString())) return PlainTextContent.of(new TranslatorWithCache().getTranslateWithCache(value.toString()));
-        if(!enableAutoTranslateWhitelist) return PlainTextContent.of(new TranslatorWithCache().getTranslateWithCache(value.toString()));
-        return value;
+        if(value.getType()!=PlainTextContent.TYPE) return value;
+        String str=((PlainTextContent) value).string();
+        return PlainTextContent.of(Language.getInstance().get(String.format("makei18ngreatagain.\"%s\"",str),str));
     }
 }
