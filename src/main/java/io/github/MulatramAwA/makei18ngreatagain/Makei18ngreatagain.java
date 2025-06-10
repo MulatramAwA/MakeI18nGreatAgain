@@ -10,12 +10,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Makei18ngreatagain implements ModInitializer {
     public static final String MOD_ID = "makei18ngreatagain";
     public static final Logger LOGGER=LoggerFactory.getLogger(MOD_ID);
-
+    public static Map<String,String> map=new LinkedHashMap<>();
     @Override
     public void onInitialize() {
         ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new SimpleSynchronousResourceReloadListener() {
