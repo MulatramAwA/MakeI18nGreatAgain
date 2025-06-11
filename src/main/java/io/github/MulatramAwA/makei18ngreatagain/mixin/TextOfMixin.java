@@ -14,8 +14,10 @@ import static io.github.MulatramAwA.makei18ngreatagain.Makei18ngreatagain.map;
 public class TextOfMixin {
     @ModifyVariable(method = "<init>",at=@At("HEAD"),ordinal = 0)
     private static TextContent of(TextContent value){
-        if(value.getType()!=PlainTextContent.TYPE) return value;
-        String str=((PlainTextContent) value).string();
+        if(value.getType()!=PlainTextContent.TYPE&&value.getType()!=PlainTextContent.Literal.TYPE) return value;
+        String str;
+        if(value.getType()==PlainTextContent.TYPE) str=((PlainTextContent) value).string();
+        else str=((PlainTextContent.Literal) value).string();
         map.put(String.format("makei18ngreatagain.\"%s\"",str),str);
         if(map.size()>50) map.remove(map.entrySet().iterator().next().getKey(),map.entrySet().iterator().next().getValue());
         return PlainTextContent.of(Language.getInstance().get(String.format("makei18ngreatagain.\"%s\"",str),str));
