@@ -15,7 +15,7 @@ public class Map2JSONFile {
     public Map2JSONFile(Path path){
         this.path=path;
     }
-    private String antiEscapeChar(String str){
+    public static String antiEscapeChar(String str){
         return str.replace("\b","\\b")
                 .replace("\f","\\f")
                 .replace("\n","\\n")
@@ -26,7 +26,7 @@ public class Map2JSONFile {
                 .replace("\"","\\\"")
                 .replace("\0","\\0");
     }
-    public String getString(){
+    public static String getString(){
         StringBuilder builder=new StringBuilder();
         builder.append("{\n");
         map.forEach((key, value) -> {
