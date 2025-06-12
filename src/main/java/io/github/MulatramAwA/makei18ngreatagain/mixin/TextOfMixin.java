@@ -22,7 +22,7 @@ public class TextOfMixin {
         if(value.getType()==PlainTextContent.TYPE) str=((PlainTextContent) value).string();
         else str=((PlainTextContent.Literal) value).string();
         map.put(TranslationKeyMap.getTranslationKey(str),str);
-        LOGGER.info(String.format("Mixin got[\"%s\":\"%s\"]",antiEscapeChar(TranslationKeyMap.getTranslationKey(antiEscapeChar(str))), antiEscapeChar(str)));
+        LOGGER.debug(String.format("Mixin got[\"%s\":\"%s\"]",antiEscapeChar(TranslationKeyMap.getTranslationKey(antiEscapeChar(str))), antiEscapeChar(str)));
         if(map.size()>50) map.remove(map.entrySet().iterator().next().getKey(),map.entrySet().iterator().next().getValue());
         return PlainTextContent.of(Language.getInstance().get(TranslationKeyMap.getTranslationKey(str),str));
     }
