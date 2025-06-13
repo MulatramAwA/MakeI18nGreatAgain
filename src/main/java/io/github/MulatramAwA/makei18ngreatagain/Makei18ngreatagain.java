@@ -16,7 +16,13 @@ import java.util.Map;
 public class Makei18ngreatagain implements ModInitializer {
     public static final String MOD_ID = "makei18ngreatagain";
     public static final Logger LOGGER=LoggerFactory.getLogger(MOD_ID);
-    public static Map<String,String> map=new LinkedHashMap<>();
+    public static Map<String, String> map = new LinkedHashMap<>() {
+
+        @Override
+        protected boolean removeEldestEntry(Map.Entry<String, String> eldest) {
+            return size() > 50;
+        }
+    };
     @Override
     public void onInitialize() {
         ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new SimpleSynchronousResourceReloadListener() {
