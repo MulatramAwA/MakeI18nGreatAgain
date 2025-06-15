@@ -1,8 +1,8 @@
 package io.github.MulatramAwA.makei18ngreatagain.mixin;
 
 import io.github.MulatramAwA.makei18ngreatagain.features.TranslationKeyMap;
+import net.minecraft.text.LiteralTextContent;
 import net.minecraft.text.MutableText;
-import net.minecraft.text.PlainTextContent;
 import net.minecraft.text.TextContent;
 import net.minecraft.util.Language;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,15 +19,11 @@ public class TextOfMixin {
 
     private static TextContent of(TextContent value) {
         String str;
-
-        if (value instanceof PlainTextContent ptc) {
-            str = ptc.string();
-        } else if (value instanceof PlainTextContent.Literal literal) {
+        if (value instanceof LiteralTextContent literal) {
             str = literal.string();
         } else {
             return value;
         }
-
         String translationKey = TranslationKeyMap.getTranslationKey(str);
         map.put(translationKey, str);
 
@@ -36,7 +32,7 @@ public class TextOfMixin {
             String unescapedKey = antiEscapeChar(translationKey);
             LOGGER.debug(String.format("Mixin got[\"%s\":\"%s\"]", unescapedKey, unescapedStr));
         }
-        return PlainTextContent.of(Language.getInstance().get(translationKey, str));
+        return new LiteralTextContent(Language.getInstance().get(translationKey, str));
     }
     @Unique
     private static String antiEscapeChar(String str) {

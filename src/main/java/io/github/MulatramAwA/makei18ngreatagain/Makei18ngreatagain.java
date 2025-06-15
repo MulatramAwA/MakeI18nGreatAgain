@@ -25,16 +25,5 @@ public class Makei18ngreatagain implements ModInitializer {
     };
     @Override
     public void onInitialize() {
-        ResourceManagerHelper.get(ResourceType.SERVER_DATA).registerReloadListener(new SimpleSynchronousResourceReloadListener() {
-            @Override
-            public Identifier getFabricId() {
-                return Identifier.of("makei18ngreatagain");
-            }
-
-            @Override
-            public void reload(ResourceManager manager) {
-
-            }
-        });
     }
 }
