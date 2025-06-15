@@ -11,7 +11,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 import static io.github.MulatramAwA.makei18ngreatagain.Makei18ngreatagain.LOGGER;
-import static io.github.MulatramAwA.makei18ngreatagain.Makei18ngreatagain.map;
 
 @Mixin(MutableText.class)
 public class TextOfMixin {
@@ -29,7 +28,6 @@ public class TextOfMixin {
         }
 
         String translationKey = TranslationKeyMap.getTranslationKey(str);
-        map.put(translationKey, str);
 
         if (LOGGER.isDebugEnabled()) {
             String unescapedStr = antiEscapeChar(str);
