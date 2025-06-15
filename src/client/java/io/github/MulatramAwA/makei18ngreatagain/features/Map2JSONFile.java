@@ -6,9 +6,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.util.Map;
 
 import static io.github.MulatramAwA.makei18ngreatagain.Makei18ngreatagain.LOGGER;
-import static io.github.MulatramAwA.makei18ngreatagain.Makei18ngreatagain.map;
 
 public class Map2JSONFile {
     public Path path;
@@ -26,7 +26,7 @@ public class Map2JSONFile {
                 .replace("\"","\\\"")
                 .replace("\0","\\0");
     }
-    public static String getString(){
+    public static String getString(Map<String,String> map){
         StringBuilder builder=new StringBuilder();
         builder.append("{\n");
         map.forEach((key, value) -> {
@@ -40,13 +40,13 @@ public class Map2JSONFile {
         builder.deleteCharAt(builder.lastIndexOf(","));
         return builder.toString();
     }
-    public void save() {
+    public void save(Map<String,String> map) {
         try{
             path.toFile().mkdir();
             File file= path.resolve("Makei18ngreatagain-"+Util.getFormattedCurrentTime()+".json").toFile();
             file.createNewFile();
             FileOutputStream stream=new FileOutputStream(file);
-            stream.write(getString().getBytes(StandardCharsets.UTF_8));
+            stream.write(getString(map).getBytes(StandardCharsets.UTF_8));
             stream.flush();
             stream.close();
         }catch (Exception e){

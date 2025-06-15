@@ -4,6 +4,8 @@
   "package": "io.github.MulatramAwA.makei18ngreatagain.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
+    "DrawTextMixin",
+    "KeyBindingMixin"
   ],
   "injectors": {
     "defaultRequire": 1
